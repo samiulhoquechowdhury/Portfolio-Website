@@ -7,14 +7,15 @@ const projects = [
     title: "AI Chatbot",
     description: "An intelligent chatbot powered by GPT-4.",
     image:
-      "https://github.com/Projects-Developer/AI-Chatbot-Final-Year-Project/raw/main/ai-chatbot.png",
+      "https://img.freepik.com/free-vector/chatbot-technology-website-template_107791-113.jpg?t=st=1740331273~exp=1740334873~hmac=7c52373aa23571ae1a262e4737d76b02194bea5cee3dc1904a0ad897f7026040&w=1380",
     github: "https://github.com/yourprofile/ai-chatbot",
     live: "https://ai-chatbot-demo.com",
   },
   {
     title: "Crypto Dashboard",
     description: "A real-time dashboard for crypto market insights.",
-    image: "https://www.behance.net/gallery/159501167/Cryptocurrency-Dashboard",
+    image:
+      "https://img.freepik.com/free-photo/cyberpunk-bitcoin-illustration_23-2151611167.jpg?t=st=1740330707~exp=1740334307~hmac=ba3b1a2c395febe8b0b05df6863c2e87c7bf95ceede186e6a8123f6a6bdc161f&w=1380",
     github: "https://github.com/yourprofile/crypto-dashboard",
     live: "https://crypto-dashboard.com",
   },
@@ -22,7 +23,7 @@ const projects = [
     title: "3D Portfolio",
     description: "An interactive 3D portfolio built with React Three Fiber.",
     image:
-      "https://vanschneider.com/blog/portfolio-tips/favorite-3d-design-portfolios-made-semplice/",
+      "https://img.freepik.com/free-photo/creative-3d-render-design-web-banner-marketing-material-business-presentation-online-advertising_460848-7134.jpg?t=st=1740330967~exp=1740334567~hmac=6bc88c85a57170c132f2e0e2bc2ba94087c8a9450ad9a7815c963b468b9e4778&w=1060",
     github: "https://github.com/yourprofile/3d-portfolio",
     live: "https://your-portfolio.com",
   },
@@ -30,7 +31,7 @@ const projects = [
     title: "E-commerce Platform",
     description: "A scalable e-commerce platform with modern UI/UX.",
     image:
-      "https://www.behance.net/gallery/78762597/Ecommerce-Platform-Design-for-Chlo",
+      "https://img.freepik.com/free-vector/man-laptop-technology-website-market-sale_24877-56045.jpg?t=st=1740331329~exp=1740334929~hmac=8965be362e57790b94b328aec1911101b460d5b3a7358aa12560d3c6d77f94ce&w=826",
     github: "https://github.com/yourprofile/ecommerce-platform",
     live: "https://ecommerce-platform.com",
   },
@@ -38,7 +39,7 @@ const projects = [
     title: "Task Manager",
     description: "A minimal task manager with intuitive UI.",
     image:
-      "https://sweetmag.digital/9-project-task-management-tools-for-project-managers/",
+      "https://img.freepik.com/free-vector/students-employees-adding-events-deadlines-calendar-app-young-people-using-time-organizer-planner-flat-illustration_74855-20735.jpg?t=st=1740331386~exp=1740334986~hmac=716308055403ba9818b81aabf92e43ea0f9bd6b8fa6694a5e7a8a2530b9578ef&w=826",
     github: "https://github.com/yourprofile/task-manager",
     live: "https://task-manager.com",
   },
