@@ -39,7 +39,10 @@ const AboutMe = () => {
           break;
         case "help":
           response =
-            "Available commands: whoami, skills, projects, contact, experience, education, clear.";
+            "Available commands: whoami, skills, projects, contact, experience, education, ls, clear.";
+          break;
+        case "ls":
+          response = "whoami skills projects contact experience education ";
           break;
         case "clear":
           setOutput(["Type 'help' to see available commands."]);
@@ -75,7 +78,7 @@ const AboutMe = () => {
             <div className="w-3 h-3 bg-red-500 rounded-full mr-2"></div>
             <div className="w-3 h-3 bg-yellow-500 rounded-full mr-2"></div>
             <div className="w-3 h-3 bg-green-500 rounded-full"></div>
-            <span className="ml-auto">samiul@Legion: ~</span>
+            <span className="ml-auto">samiul@Linux: ~</span>
           </div>
           <div
             ref={terminalRef}
