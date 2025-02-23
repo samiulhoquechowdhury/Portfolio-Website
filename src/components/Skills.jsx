@@ -111,7 +111,21 @@ const Skills = () => {
         Skills
       </motion.h2>
 
-      <div className="relative mt-4 w-full h-[500px] flex items-center justify-center">
+      {/* Mobile View */}
+      <div className="w-full h-full md:hidden grid grid-cols-3 gap-4 justify-center items-center">
+        {skills.map((skill) => (
+          <div
+            key={skill.id}
+            className="flex justify-center items-center p-4 bg-[#08192d] rounded-lg"
+          >
+            <div className="text-white text-sm md:text-base">{skill.icon}</div>{" "}
+            {/* Reduced size on mobile */}
+          </div>
+        ))}
+      </div>
+
+      {/* Desktop View */}
+      <div className="relative mt-4 w-full h-[500px] flex items-center justify-center hidden md:flex">
         <motion.div className="absolute text-2xl text-cyan-300 font-bold border border-cyan-400 px-4 py-2 rounded-lg">
           Tech Stack
         </motion.div>
