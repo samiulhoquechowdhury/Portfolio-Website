@@ -103,7 +103,7 @@ const Skills = () => {
       className="relative h-screen flex flex-col items-center justify-center text-center bg-[#020617] px-2 md:px-12 overflow-hidden"
     >
       <motion.h2
-        className="text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 to-blue-400 tracking-wider drop-shadow-md mb-28"
+        className="text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 to-blue-400 tracking-wider drop-shadow-md mb-28 md:mb-28 sm:mb-12 mt-10 sm:mt-4 md:mt-0" // Added responsive margin top
         initial={{ opacity: 0, y: -50 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1 }}
