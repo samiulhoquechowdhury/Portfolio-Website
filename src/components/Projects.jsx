@@ -96,9 +96,12 @@ const ProjectCard = ({ title, description, image, github, live }) => {
 
 const Projects = () => {
   return (
-    <section className="py-20 px-6 md:px-12 bg-[#080d16] relative">
+    <section
+      id="projects"
+      className="py-20 px-6 md:px-12 bg-[#080d16] relative"
+    >
       <div className="absolute inset-0 bg-grid-cyan opacity-10 pointer-events-none"></div>
-      <h2 className="text-5xl font-extrabold text-center text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500 tracking-wide mb-12 uppercase">
+      <h2 className="text-5xl font-extrabold text-center text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500 tracking-wide mb-12">
         Projects
       </h2>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-12">

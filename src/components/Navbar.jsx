@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
+import { Link } from "react-scroll"; // Import Link from react-scroll
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -22,17 +23,28 @@ const Navbar = () => {
 
       {/* Desktop Menu */}
       <ul className="hidden md:flex space-x-8 text-lg">
-        {["Home", "Projects", "Skills", "Contact"].map((item, index) => (
-          <motion.li
-            key={index}
-            className="relative text-white cursor-pointer tracking-wider transition-all duration-300 group"
-            whileHover={{ scale: 1.1 }}
-          >
-            {item}
-            {/* Neon Animated Underline */}
-            <span className="absolute left-0 bottom-0 w-0 h-[2px] bg-cyan-400 transition-all duration-300 group-hover:w-full"></span>
-          </motion.li>
-        ))}
+        {["Home", "About", "Skills", "Projects", "Contact"].map(
+          (item, index) => (
+            <motion.li
+              key={index}
+              className="relative text-white cursor-pointer tracking-wider transition-all duration-300 group"
+              whileHover={{ scale: 1.1 }}
+            >
+              {/* Use Link for smooth scrolling */}
+              <Link
+                to={item.toLowerCase()}
+                smooth={true}
+                duration={500}
+                offset={-50} // Adjust for any fixed navbar height
+                className="cursor-pointer"
+              >
+                {item}
+              </Link>
+              {/* Neon Animated Underline */}
+              <span className="absolute left-0 bottom-0 w-0 h-[2px] bg-cyan-400 transition-all duration-300 group-hover:w-full"></span>
+            </motion.li>
+          )
+        )}
       </ul>
 
       {/* Mobile Menu Button */}
@@ -51,15 +63,17 @@ const Navbar = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
         >
-          {["Home", "Projects", "Skills", "Contact"].map((item, index) => (
-            <motion.a
-              key={index}
-              href={`#${item.toLowerCase()}`}
-              className="text-white cursor-pointer hover:text-cyan-400 transition duration-300"
-            >
-              {item}
-            </motion.a>
-          ))}
+          {["Home", "About", "Skills", "Projects", "Contact"].map(
+            (item, index) => (
+              <motion.a
+                key={index}
+                href={`#${item.toLowerCase()}`} // Update to match the ID of the section
+                className="text-white cursor-pointer hover:text-cyan-400 transition duration-300"
+              >
+                {item}
+              </motion.a>
+            )
+          )}
         </motion.div>
       )}
     </motion.nav>

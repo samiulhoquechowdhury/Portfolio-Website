@@ -56,7 +56,10 @@ const AboutMe = () => {
   }, [output]);
 
   return (
-    <section className="py-20 px-6 md:px-12 bg-[#080d16] relative overflow-hidden flex flex-col md:flex-row items-center text-center md:text-left">
+    <section
+      id="about"
+      className="py-20 px-6 md:px-12 bg-[#080d16] relative overflow-hidden flex flex-col md:flex-row items-center text-center md:text-left"
+    >
       {/* Interactive Terminal Box */}
       <motion.div
         className="w-full md:w-1/2 flex justify-center mb-8 md:mb-0"
