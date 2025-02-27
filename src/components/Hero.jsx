@@ -1,160 +1,124 @@
 import { motion } from "framer-motion";
-import Tilt from "react-parallax-tilt";
-import { useEffect } from "react";
-import { FaGithub, FaTwitter, FaInstagram, FaEnvelope } from "react-icons/fa"; // Import social media icons
-import { FaMouse } from "react-icons/fa"; // Import mouse icon
+import { FaGithub, FaTwitter, FaInstagram, FaEnvelope } from "react-icons/fa";
+import { useState } from "react";
 
-const Hero = () => {
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
+export default function Hero() {
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+
+  const handleMouseMove = (e) => {
+    setMousePosition({ x: e.clientX, y: e.clientY });
+  };
 
   return (
     <section
-      id="home"
-      className="relative h-screen flex flex-col items-center justify-center text-center bg-black overflow-hidden px-4 md:px-12"
+      className="h-screen flex flex-col justify-center items-center text-center bg-gradient-to-r from-black via-gray-900 to-black text-white px-6 relative overflow-hidden"
+      onMouseMove={handleMouseMove}
     >
-      {/* Centered Hero Content */}
-      <Tilt
-        tiltMaxAngleX={10}
-        tiltMaxAngleY={10}
-        glareEnable
-        glareMaxOpacity={0.3}
+      {/* Enhanced Parallax Background Layers with More Dots and Neon Glow on Hover */}
+      <motion.div className="absolute inset-0 opacity-60">
+        <div className="absolute inset-0 grid grid-cols-40 grid-rows-40 gap-1">
+          {Array.from({ length: 1600 }).map((_, i) => {
+            const dotX = (i % 40) * 25 + 12;
+            const dotY = Math.floor(i / 40) * 25 + 12;
+            const distance = Math.sqrt(
+              Math.pow(mousePosition.x - dotX, 2) +
+                Math.pow(mousePosition.y - dotY, 2)
+            );
+            const glowIntensity = Math.max(0, 1 - distance / 50); // Instant response and reduced radius
+
+            return (
+              <motion.div
+                key={i}
+                className="w-1.5 h-1.5 bg-gray-700 rounded-full"
+                animate={{
+                  backgroundColor: glowIntensity > 0 ? "#ffffff" : "#555",
+                  boxShadow:
+                    glowIntensity > 0
+                      ? `0px 0px ${8 * glowIntensity}px ${
+                          3 * glowIntensity
+                        }px #ffffff`
+                      : "none",
+                  opacity: glowIntensity > 0 ? 1 : 0.4,
+                }}
+                transition={{ duration: 0.02, ease: "linear" }} // Instant transition for no delay
+                style={{ position: "absolute", left: dotX, top: dotY }}
+              />
+            );
+          })}
+        </div>
+      </motion.div>
+
+      {/* Hero Text */}
+      <motion.h1
+        initial={{ opacity: 0, y: -50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+        className="text-7xl font-extrabold relative tracking-wide drop-shadow-md"
       >
-        <motion.div
-          className="relative z-10 backdrop-blur-lg bg-white/10 p-6 md:p-12 rounded-2xl border border-cyan-500 shadow-lg hover:shadow-xl transition-all duration-500 max-w-lg md:max-w-3xl"
+        <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400 animate-pulse">
+          Hi, I'm
+        </span>
+        <motion.span
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1.5 }}
+          transition={{ duration: 1, delay: 0.2 }}
+          className="ml-3 text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400 drop-shadow-lg"
         >
-          <motion.h1
-            className="text-4xl md:text-6xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-500 uppercase"
-            initial={{ opacity: 0, y: -30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1 }}
-          >
-            Cybernetic Visionary
-          </motion.h1>
+          Samiul
+        </motion.span>
+      </motion.h1>
 
-          {/* New Content in the Card */}
-          <motion.p
-            className="text-gray-300 mt-6 text-lg md:text-xl max-w-md md:max-w-2xl"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 1, delay: 0.3 }}
-          >
-            I am a passionate innovator at the intersection of technology and
-            creativity. With a focus on{" "}
-            <span className="text-cyan-400">AI/Ml</span>,{" "}
-            <span className="text-blue-400">Full Stack</span>, and{" "}
-            <span className="text-purple-400">DevOps</span>, I strive to build
-            the future today.
-            <br />
-            <br />
-            My goal is to push the boundaries of what is possible, creating
-            solutions that will revolutionize industries and empower the digital
-            age.
-          </motion.p>
-
-          <motion.p
-            className="text-gray-300 mt-4 text-lg md:text-xl max-w-md md:max-w-2xl"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 1, delay: 0.5 }}
-          >
-            Whether it’s crafting decentralized apps, strengthening digital
-            security, or pioneering AI-driven solutions, I am driven by a deep
-            desire to innovate and bring meaningful change to the world.
-          </motion.p>
-
-          {/* Action Buttons */}
-          <motion.div
-            className="mt-6 flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4 justify-center"
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.5, delay: 0.7 }}
-          >
-            <a
-              href="#projects"
-              className="px-6 py-3 text-lg font-semibold bg-cyan-500 hover:bg-cyan-600 text-white rounded-lg shadow-lg transition-all duration-300 hover:scale-110"
-            >
-              Explore the Future 🚀
-            </a>
-            <a
-              href="#contact"
-              className="px-6 py-3 text-lg font-semibold border-2 border-white text-white rounded-lg shadow-lg hover:bg-white hover:text-gray-900 transition-all duration-300 hover:scale-110"
-            >
-              Link to the Grid 📡
-            </a>
-          </motion.div>
-
-          {/* Social Media Icons */}
-          <motion.div
-            className="mt-8 flex space-x-6 justify-center"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 1, delay: 0.8 }}
-          >
-            <a
-              href="https://github.com/samiulhoquechowdhury"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-white hover:text-cyan-400 transition-all duration-300 text-2xl"
-            >
-              <FaGithub />
-            </a>
-            <a
-              href="https://twitter.com/yourusername"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-white hover:text-cyan-400 transition-all duration-300 text-2xl"
-            >
-              <FaTwitter />
-            </a>
-            <a
-              href="https://www.instagram.com/yourusername"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-white hover:text-cyan-400 transition-all duration-300 text-2xl"
-            >
-              <FaInstagram />
-            </a>
-            <a
-              href="mailto:yourname@gmail.com"
-              className="text-white hover:text-cyan-400 transition-all duration-300 text-2xl"
-            >
-              <FaEnvelope />
-            </a>
-          </motion.div>
-        </motion.div>
-      </Tilt>
-
-      {/* Scroll Text and Mouse Icon */}
-      <motion.div
-        className="absolute bottom-6 w-full flex flex-col items-center text-gray-300 text-lg"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1, delay: 1 }}
+      <motion.p
+        initial={{ opacity: 0, y: 50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1, delay: 0.3 }}
+        className="text-lg mt-6 max-w-2xl text-gray-300 leading-relaxed shadow-md tracking-wide"
       >
-        {/* Scroll Text */}
+        Crafting clean, modern, and interactive web experiences with a
+        futuristic touch.
+      </motion.p>
 
-        {/* Mouse Icon with Animation */}
-        <motion.div
-          className="mt-4 text-3xl text-cyan-500"
-          animate={{
-            y: [0, 15, 0], // Animate mouse up and down
-          }}
-          transition={{
-            duration: 1,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-        >
-          <FaMouse />
-        </motion.div>
+      {/* Floating 3D Social Icons */}
+      <motion.div className="mt-10 flex gap-6">
+        {[
+          {
+            icon: <FaGithub />,
+            link: "https://github.com/samiulhoquechowdhury",
+          },
+          {
+            icon: <FaTwitter />,
+            link: "https://twitter.com/yourprofile",
+          },
+          {
+            icon: <FaInstagram />,
+            link: "https://instagram.com/johnny_instaa",
+          },
+          {
+            icon: <FaEnvelope />,
+            link: "mailto:samiulofficialworks@gmail.com",
+          },
+        ].map((item, index) => (
+          <a
+            key={index}
+            href={item.link}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-4xl text-gray-300 transition-all drop-shadow-lg"
+          >
+            {item.icon}
+          </a>
+        ))}
+      </motion.div>
+
+      {/* Scroll Down Indicator */}
+      <motion.div
+        initial={{ opacity: 0, y: 100 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1, delay: 0.8 }}
+        className="absolute bottom-8 text-gray-400 text-sm animate-bounce"
+      >
+        Scroll down to explore ↓
       </motion.div>
     </section>
   );
-};
-
-export default Hero;
+}
