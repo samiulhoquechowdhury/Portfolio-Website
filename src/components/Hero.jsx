@@ -6,7 +6,7 @@ import { useState, useEffect } from "react";
 export default function Hero() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
 
-  // Scroll to top when the component mounts
+  // / Scroll to top when the component mounts
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -63,7 +63,7 @@ export default function Hero() {
         className="text-7xl font-extrabold relative tracking-wide drop-shadow-md"
       >
         <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400">
-          Hi, I'm
+          Hi, I'm <br />
         </span>
         <motion.span
           initial={{ opacity: 0, scale: 0.8 }}
@@ -92,7 +92,7 @@ export default function Hero() {
             icon: <FaGithub />,
             link: "https://github.com/samiulhoquechowdhury",
           },
-          { icon: <FaTwitter />, link: "https://twitter.com/yourprofile" },
+          { icon: <FaTwitter />, link: "https://twitter.com/Samiul_018" },
           {
             icon: <FaInstagram />,
             link: "https://instagram.com/johnny_instaa",
