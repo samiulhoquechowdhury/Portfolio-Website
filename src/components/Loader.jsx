@@ -71,7 +71,7 @@ const Loader = () => {
           transition={{ duration: 0.1, repeat: Infinity, ease: "easeInOut" }}
           style={{ textShadow: "0px 0px 12px rgba(255,0,255,0.8)" }}
         >
-          Samiul
+          Samiul⚡
         </motion.span>
       </motion.h1>
 
