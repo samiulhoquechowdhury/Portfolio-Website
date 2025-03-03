@@ -1,9 +1,15 @@
+"use client";
 import { motion } from "framer-motion";
 import { FaGithub, FaTwitter, FaInstagram, FaEnvelope } from "react-icons/fa";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function Hero() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+
+  // Scroll to top when the component mounts
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   const handleMouseMove = (e) => {
     setMousePosition({ x: e.clientX, y: e.clientY });
@@ -11,10 +17,11 @@ export default function Hero() {
 
   return (
     <section
-      className="h-screen flex flex-col justify-center items-center text-center bg-gradient-to-r from-black via-gray-900 to-black text-white px-6 relative overflow-hidden"
+      id="hero"
+      className="min-h-screen flex flex-col justify-center items-center text-center bg-gradient-to-r from-black via-gray-900 to-black text-white px-6 relative overflow-hidden"
       onMouseMove={handleMouseMove}
     >
-      {/* Enhanced Parallax Background Layers with More Dots and Neon Glow on Hover */}
+      {/* Parallax Dots Background */}
       <motion.div className="absolute inset-0 opacity-60">
         <div className="absolute inset-0 grid grid-cols-40 grid-rows-40 gap-1">
           {Array.from({ length: 1600 }).map((_, i) => {
@@ -24,7 +31,7 @@ export default function Hero() {
               Math.pow(mousePosition.x - dotX, 2) +
                 Math.pow(mousePosition.y - dotY, 2)
             );
-            const glowIntensity = Math.max(0, 1 - distance / 50); // Instant response and reduced radius
+            const glowIntensity = Math.max(0, 1 - distance / 50);
 
             return (
               <motion.div
@@ -40,7 +47,7 @@ export default function Hero() {
                       : "none",
                   opacity: glowIntensity > 0 ? 1 : 0.4,
                 }}
-                transition={{ duration: 0.02, ease: "linear" }} // Instant transition for no delay
+                transition={{ duration: 0.02, ease: "linear" }}
                 style={{ position: "absolute", left: dotX, top: dotY }}
               />
             );
@@ -48,47 +55,44 @@ export default function Hero() {
         </div>
       </motion.div>
 
-      {/* Hero Text */}
+      {/* Hero Title */}
       <motion.h1
-        initial={{ opacity: 0, y: -50 }}
+        initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
+        transition={{ duration: 0.6, ease: "easeOut" }}
         className="text-7xl font-extrabold relative tracking-wide drop-shadow-md"
       >
-        <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400 animate-pulse">
+        <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400">
           Hi, I'm
         </span>
         <motion.span
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1, delay: 0.2 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
           className="ml-3 text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400 drop-shadow-lg"
         >
-          Samiul
+          Samiul Chowdhury
         </motion.span>
       </motion.h1>
 
       <motion.p
-        initial={{ opacity: 0, y: 50 }}
+        initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1, delay: 0.3 }}
+        transition={{ duration: 0.8, delay: 0.3 }}
         className="text-lg mt-6 max-w-2xl text-gray-300 leading-relaxed shadow-md tracking-wide"
       >
         Crafting clean, modern, and interactive web experiences with a
         futuristic touch.
       </motion.p>
 
-      {/* Floating 3D Social Icons */}
+      {/* Social Icons */}
       <motion.div className="mt-10 flex gap-6">
         {[
           {
             icon: <FaGithub />,
             link: "https://github.com/samiulhoquechowdhury",
           },
-          {
-            icon: <FaTwitter />,
-            link: "https://twitter.com/yourprofile",
-          },
+          { icon: <FaTwitter />, link: "https://twitter.com/yourprofile" },
           {
             icon: <FaInstagram />,
             link: "https://instagram.com/johnny_instaa",
@@ -110,11 +114,11 @@ export default function Hero() {
         ))}
       </motion.div>
 
-      {/* Scroll Down Indicator */}
+      {/* Scroll Indicator */}
       <motion.div
-        initial={{ opacity: 0, y: 100 }}
+        initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1, delay: 0.8 }}
+        transition={{ duration: 0.8, delay: 0.8 }}
         className="absolute bottom-8 text-gray-400 text-sm animate-bounce"
       >
         Scroll down to explore ↓
