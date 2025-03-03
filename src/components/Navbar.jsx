@@ -17,25 +17,23 @@ const Navbar = () => {
 
       {/* Desktop Menu */}
       <ul className="hidden md:flex space-x-6 text-base">
-        {["Home", "About", "Skills", "Projects", "Contact"].map(
-          (item, index) => (
-            <motion.li
-              key={index}
-              className="relative text-white cursor-pointer tracking-wider transition-all duration-300 group"
-              whileHover={{ scale: 1.1 }}
+        {["Home", "About", "Skills", "Projects"].map((item, index) => (
+          <motion.li
+            key={index}
+            className="relative text-white cursor-pointer tracking-wider transition-all duration-300 group"
+            whileHover={{ scale: 1.1 }}
+          >
+            <Link
+              to={item.toLowerCase()}
+              smooth={true}
+              duration={500}
+              offset={-50}
             >
-              <Link
-                to={item.toLowerCase()}
-                smooth={true}
-                duration={500}
-                offset={-50}
-              >
-                {item}
-              </Link>
-              <span className="absolute left-0 bottom-0 w-0 h-[2px] bg-cyan-400 transition-all duration-300 group-hover:w-full"></span>
-            </motion.li>
-          )
-        )}
+              {item}
+            </Link>
+            <span className="absolute left-0 bottom-0 w-0 h-[2px] bg-cyan-400 transition-all duration-300 group-hover:w-full"></span>
+          </motion.li>
+        ))}
       </ul>
 
       {/* Mobile Menu Button */}
@@ -62,28 +60,26 @@ const Navbar = () => {
             >
               <X size={36} />
             </button>
-            {["Home", "About", "Skills", "Projects", "Contact"].map(
-              (item, index) => (
-                <motion.div
-                  key={index}
-                  className="cursor-pointer tracking-wide transition-all duration-300"
-                  whileHover={{ scale: 1.1 }}
-                  initial={{ opacity: 0, x: 50 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.1 * index, duration: 0.3 }}
-                  onClick={() => setIsOpen(false)}
+            {["Home", "About", "Skills", "Projects"].map((item, index) => (
+              <motion.div
+                key={index}
+                className="cursor-pointer tracking-wide transition-all duration-300"
+                whileHover={{ scale: 1.1 }}
+                initial={{ opacity: 0, x: 50 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.1 * index, duration: 0.3 }}
+                onClick={() => setIsOpen(false)}
+              >
+                <Link
+                  to={item.toLowerCase()}
+                  smooth={true}
+                  duration={500}
+                  offset={-50}
                 >
-                  <Link
-                    to={item.toLowerCase()}
-                    smooth={true}
-                    duration={500}
-                    offset={-50}
-                  >
-                    {item}
-                  </Link>
-                </motion.div>
-              )
-            )}
+                  {item}
+                </Link>
+              </motion.div>
+            ))}
           </motion.div>
         )}
       </AnimatePresence>
